@@ -1,21 +1,18 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import React from 'react';
-import styles from '../styles/Home.module.css'
-import prisma from '../lib/prisma'
+import styled from 'styled-components'
+//import prisma from '../lib/prisma'
 import BasicTable from './components/Table';
 import { useEffect, useState } from 'react'
-import { GetServerSideProps } from 'next';
 
 
 export default function Home() {  
 
-  const[reactData, setReactData] = useState([]);
+  const[reactData, setData] = useState([]);
   useEffect(() => {
     fetch('http://localhost:3000/api/obtenDatos')
     .then(res => res.json())
     .then(data => {
-      setReactData(data);
+      setData(data);
     }).catch((e) => {console.log(e)});
   }, []);
 
@@ -46,6 +43,37 @@ export default function Home() {
   );
 
   return (
-    <BasicTable columns={columns} data={reactData}/>
+    <Styles>
+      <>{reactData && <BasicTable columns={columns} data={data}/>}</>
+    </Styles>    
   )
 }
+
+const Styles = styled.div`
+  padding: 1rem;
+
+  table {
+    border-spacing: 0;
+    border: 1px solid black;
+
+    tr {
+      :last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    th,
+    td {
+      margin: 0;
+      padding: 0.5rem;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
+      :last-child {
+        border-right: 0;
+      }
+    }
+  }
+`
