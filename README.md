@@ -1,4 +1,4 @@
-## Lista de istrucciones
+## Lista de instrucciones
 
 Una pequeña lista de instrucciones para obtener los datos con `prisma` y mostrarlos en una tabla con `React-Table`:
 
