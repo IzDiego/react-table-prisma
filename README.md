@@ -1,18 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-
 ## Lista de istrucciones
 
 Una pequeña lista de instrucciones para obtener los datos con `prisma` y mostrarlos en una tabla con `React-Table`:
@@ -28,4 +13,19 @@ Una pequeña lista de instrucciones para obtener los datos con `prisma` y mostra
 - [4.5. Agregamos estilo a nuestra tabla]().
 - [5. Le agregamos las funciones al React-Table](https://betterprogramming.pub/how-to-efficiently-display-data-in-tables-with-react-7e133bad5719) - Guía para mostrar, filtrar y ordenar datos con React-Table
 
+
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Getting Started
+
+Run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
