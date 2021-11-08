@@ -26,6 +26,6 @@ Una pequeña lista de instrucciones para obtener los datos con `prisma` y mostra
 - [4.3. Obtenemos los datos para llenar la tabla desde el api]().
 - [4.4. Enviamos el header y los datos al generador]().
 - [4.5. Agregamos estilo a nuestra tabla]().
-- [5. Le agregamos las funciones al React-Table]().
+- [5. Le agregamos las funciones al React-Table](https://betterprogramming.pub/how-to-efficiently-display-data-in-tables-with-react-7e133bad5719) - Guía para mostrar, filtrar y ordenar datos con React-Table
 
 
