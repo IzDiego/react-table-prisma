@@ -1,0 +1,19 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cancion {
+  id      Int      @id @default(autoincrement())
+  titulo  String   @db.VarChar(255)
+  artista String   @db.VarChar(255)
+  year    Int        
+  genero  String   @db.VarChar(255)
+}
