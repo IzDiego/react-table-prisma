@@ -39,7 +39,7 @@ export default function Home() {
   );
   console.log(reactData)
   const data = React.useMemo(
-    () => reactData,[]
+    () => reactData,[reactData]
   );
 
   return (
