@@ -7,7 +7,7 @@ export default function ColumnFilter({ column }) {
         <input
           value={filterValue || ""}
           onChange={(e) => setFilter(e.target.value)}
-          placeholder={`${count} results`}
+          placeholder={`${count} resultados`}
         />
       </>
     );

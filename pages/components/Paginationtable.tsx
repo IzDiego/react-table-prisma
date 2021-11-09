@@ -1,5 +1,5 @@
 import React from "react";
-import { useTable, usePagination, useFilters, useGlobalFilter } from "react-table";
+import { useTable, usePagination, useFilters } from "react-table";
 import ColumnFilter from "./ColumnFilter";
 
 export default function PaginationTable({ columns, data }) {
@@ -29,7 +29,7 @@ export default function PaginationTable({ columns, data }) {
       columns,
       data,
       defaultColumn,
-      initialState: { pageSize: 5 }
+      initialState: { pageSize: 6 }
     },
     useFilters,
     usePagination
