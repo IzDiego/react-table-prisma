@@ -44,7 +44,7 @@ export default function PaginationTable({ columns, data }) {
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps()}>
-                  <tr><div>{column.canFilter ? column.render("Filter") : null}</div></tr>
+                  <div>{column.canFilter ? column.render("Filter") : null}</div>
                   {column.render("Header")}                  
                   </th>
               ))}
