@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components'
 //import prisma from '../lib/prisma'
-import BasicTable from './components/Table';
+import BasicTable from './components/Table'
+import PaginationTable from './components/Paginationtable'
 import { useEffect, useState } from 'react'
 
 
 export default function Home() {  
 
-  const[reactData, setData] = useState([]);
+  const[cells, setCells] = useState([]);
+
   useEffect(() => {
     fetch('http://localhost:3000/api/obtenDatos')
     .then(res => res.json())
     .then(data => {
-      setData(data);
+      setCells(data);
     }).catch((e) => {console.log(e)});
   }, []);
 
@@ -37,14 +39,14 @@ export default function Home() {
     ],
     []
   );
-  console.log(reactData)
+  console.log(cells)
   const data = React.useMemo(
-    () => reactData,[reactData]
+    () => cells,[cells]
   );
 
   return (
     <Styles>
-      <>{reactData && <BasicTable columns={columns} data={data}/>}</>
+      <PaginationTable columns={columns} data={data}/>
     </Styles>    
   )
 }
