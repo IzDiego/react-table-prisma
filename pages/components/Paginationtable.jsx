@@ -3,15 +3,13 @@ import { useTable, usePagination, useFilters } from "react-table";
 import ColumnFilter from "./ColumnFilter";
 
 export default function PaginationTable({ columns, data }) {
-
   const defaultColumn = React.useMemo(
     () => ({
       // Let's set up our default Filter UI
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     }),
     []
   );
-
 
   // Use the useTable Hook to send the columns and data to build the table
   const {
@@ -23,17 +21,16 @@ export default function PaginationTable({ columns, data }) {
     previousPage,
     canNextPage,
     canPreviousPage,
-    prepareRow // Prepare the row (this function needs to be called for each row before getting the row props)
+    prepareRow, // Prepare the row (this function needs to be called for each row before getting the row props)
   } = useTable(
     {
       columns,
       data,
       defaultColumn,
-      initialState: { pageSize: 6 }
+      initialState: { pageSize: 6 },
     },
     useFilters,
     usePagination
-    
   );
 
   return (
@@ -45,8 +42,8 @@ export default function PaginationTable({ columns, data }) {
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps()}>
                   <div>{column.canFilter ? column.render("Filter") : null}</div>
-                  {column.render("Header")}                  
-                  </th>
+                  {column.render("Header")}
+                </th>
               ))}
             </tr>
           ))}
