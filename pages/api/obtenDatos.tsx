@@ -6,9 +6,11 @@ export default async function handle(req, res){
 
   try{
     const { take, skip } = req.query;
+    const takeInt = parseInt(take);
+    const skipInt = parseInt(skip);
     const misDatos = await prisma.cancion.findMany({
-      skip: parseInt(take),
-      take: parseInt(skip),
+      skip: skipInt,
+      take: takeInt,
     });
     res.json(misDatos);
   }catch(error){
