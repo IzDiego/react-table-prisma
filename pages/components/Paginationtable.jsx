@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React from "react";
 import { useTable, usePagination, useFilters } from "react-table";
 import ColumnFilter from "./ColumnFilter";
@@ -27,7 +28,7 @@ export default function PaginationTable({ columns, data }) {
       columns,
       data,
       defaultColumn,
-      initialState: { pageSize: 6 },
+      initialState: { pageSize: 5 },
     },
     useFilters,
     usePagination

@@ -1,22 +1,25 @@
 import React from 'react';
 import styled from 'styled-components'
-//import prisma from '../lib/prisma'
 import BasicTable from './components/Table'
-import PaginationTable from './components/Paginationtable'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import useCanciones from './hooks/useCanciones';
+//import { useQuery } from 'react-query';
+//import Table from './components/Table';
+import PaginatioQueryTable from './components/PaginatioQueryTable';
+import PaginationTable from './components/Paginationtable';
 
 
-export default function Home() {  
+export default function Home({canciones, totalCanciones}) {  
 
-  const[cells, setCells] = useState([]);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(5);
+  const skips = (page-1)*perPage;
+  console.log('page='+page+ ' perPage='+perPage+' skips='+skips);
+  const { data: canciones1 } = useCanciones(skips,perPage);
+  console.log(canciones1);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const lista = canciones1 ?? [];
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/obtenDatos')
-    .then(res => res.json())
-    .then(data => {
-      setCells(data);
-    }).catch((e) => {console.log(e)});
-  }, []);
 
   const columns = React.useMemo(
     () => [
@@ -39,17 +42,37 @@ export default function Home() {
     ],
     []
   );
-  console.log(cells)
-  const data = React.useMemo(
-    () => cells,[cells]
+  const cancionesMemo = React.useMemo(
+    () => lista,[lista]
   );
 
   return (
     <Styles>
-      <PaginationTable columns={columns} data={data}/>
-    </Styles>    
+      <BasicTable 
+      columns={columns} 
+      data={cancionesMemo}
+      />
+    </Styles>
   )
 }
+/* export const getServerSideProps = async () => {
+  const canciones = await prisma.cancion.findMany({
+    select: {
+      id: true,
+      titulo: true,
+      artista: true,
+      year: true,
+      genero: true,
+    },
+    /* skip: 4,
+    take:5, 
+  })
+
+  const totalCanciones = await prisma.cancion.count();
+  return {
+    props: {canciones, totalCanciones},
+  }
+} */
 
 const Styles = styled.div`
   padding: 1rem;
